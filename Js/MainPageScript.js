@@ -15,9 +15,12 @@ function addProduct(product) {
   const productList = document.getElementById("product-list");
   const productDiv = document.createElement("div");
   productDiv.classList.add("product-item");
+  productDiv.dataset.sku = product.SKU;
+ 
 
   const deleteCheckbox = document.createElement("input");
   deleteCheckbox.type = "checkbox";
+  deleteCheckbox.dataset.productId = product.SKU;
   deleteCheckbox.classList.add("delete-checkbox");
 
   const skuSpan = document.createElement("span");
@@ -58,26 +61,36 @@ function addProduct(product) {
 
 async function deleteSelectedProducts() {
   const checkboxes = document.querySelectorAll('.delete-checkbox');
-  checkboxes.forEach(async function(checkbox) {
+  const selectedProducts = [];
+
+  checkboxes.forEach(function(checkbox) {
     if (checkbox.checked) {
-      checkbox.parentNode.remove();
-      const sku = checkbox.parentNode.querySelector('span[data-sku]').getAttribute('data-sku');
-      try {
-        const response = await fetch(`http://localhost/codes/Scaniweb/Backend/DeleteData.php?sku=${sku}`, {
-          method: 'DELETE',
-        });
-        if (response.ok) {
-          console.log(`Product with SKU ${sku} deleted successfully.`);
-        } else {
-          console.error(`Failed to delete product with SKU ${sku}.`);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  });
-}
-
-
+      const productId = checkbox.dataset.productId;
+      const productDiv = checkbox.parentNode;
+      const sku = productDiv.dataset.sku;
  
 
+      selectedProducts.push({
+        
+        sku: sku, 
+      });
+
+      productDiv.remove();
+    }
+  });
+
+  try {
+    const response = await fetch('Backend/DeleteData.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(selectedProducts)
+      
+    });
+   
+    // Handle the response from the PHP file if needed
+  } catch (error) {
+    console.error(error);
+  }
+}
