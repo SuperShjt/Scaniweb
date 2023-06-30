@@ -20,7 +20,7 @@
         Book.style.display= 'block';
       }
       else {
-        Dvd.display = 'none';
+        Dvd.style.display = 'none';
         Furniture.style.display = 'none';
         Book.style.display= 'None';
 

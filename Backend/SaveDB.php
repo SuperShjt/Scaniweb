@@ -99,6 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 echo "<script type='text/javascript'>
 						
-						location.href = '../Mainpage.php';
+						location.href = '../index.php';
 						</script>";
 ?>

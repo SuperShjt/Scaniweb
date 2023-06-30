@@ -10,7 +10,7 @@
 
           
               <button id="submitButton" onclick="checkInputDataType()">Save</button>
-              <button  onclick="location.href='Mainpage.php'">Cancel</button>
+              <button  onclick="location.href='index.php'">Cancel</button>
         </div><br><br>
       <div class = "container">
         <form id="product_form" action="Backend/SaveDB.php" method="post">
