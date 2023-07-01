@@ -16,24 +16,27 @@
         <form id="product_form" action="Backend/SaveDB.php" method="post">
           <label> SKU  </label>
           <input
+            id = "sku"
             type = "text"
             name = "SKU"
             placeholder="SKU ..."
           /><br><br>
           <label> Name  </label>
           <input
+            id = "name"
             type = "text"
             name = "Pname"
             placeholder="Product Name ..."
           /><br><br>
           <label> Price  </label>
           <input
+            id = "price"
             type = "number"
             name = "Pvalue"
             placeholder="price ..."
           /><br><br>
           <label>Type Switcher</label> 
-          <select name="ProductType" id="ProductType" onchange="showHideFields()">
+          <select name="ProductType" id="productType" onchange="showHideFields()">
           <option value="">Select an option</option>
           <option value="option1">DVD</option>
           <option value="option2">Furniture</option>
@@ -43,6 +46,7 @@
           <div id="DvD"  class="BlockShowing">
             <label> Size (MB) </label>
             <input
+                id = "size"
               type = "number"
               name = "size"
               placeholder = "Size"
@@ -52,18 +56,21 @@
           <div id="Furniture"  class="BlockShowing">
             <label> Height (CM) </label>
             <input
+                id = "height"
               type = "number"
               name = "Height"
               placeholder = "Height"
                /><br><br>
                <label> Width (CM) </label>
             <input
+                id = "width"
               type = "number"
               name = "Width"
               placeholder = "Width"
                /><br><br>
                <label> Lenght (CM) </label>
             <input
+                id = "length"
               type = "number"
               name = "Length"
               placeholder = "Length"
@@ -73,6 +80,7 @@
           <div id="Book"  class="BlockShowing">
             <label> Weight (KG) </label>
             <input
+                id = "weight"
               type = "number"
               name = "Weight"
               placeholder = "Weight"
